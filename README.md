@@ -23,6 +23,7 @@ others, but right now we support:
 
 * VC++ 2005 Express SP1
 * VC++ 2008 Express
+* VC++ 2010 Express
 
 ## Requirements
 

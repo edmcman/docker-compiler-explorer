@@ -1,3 +1,17 @@
+FROM madduci/docker-linux-cpp:latest as builder
+
+RUN dpkg --add-architecture i386 \
+    && apt-get update \
+    && apt-get install -y \
+    wine32 cabextract p7zip-full
+
+RUN wget  https://raw.githubusercontent.com/edmcman/winetricks/master/src/winetricks \
+    && chmod +x winetricks
+
+FROM builder as builder2005
+
+RUN ./winetricks -q vc2015expresssp1
+
 FROM madduci/docker-linux-cpp:latest
 
 LABEL maintainer="Edward Schwartz <edmcman@cmu.edu>" \
@@ -22,12 +36,8 @@ RUN echo "*** Installing Compiler Explorer ***" \
         cabextract \
     && apt-get autoremove --purge -y \
     && apt-get autoclean -y \
-    && echo "Installing MSVC" \
-    && wget  https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks \
+    && wget  https://raw.githubusercontent.com/edmcman/winetricks/master/src/winetricks \
     && chmod +x winetricks \
-    && (Xvfb :100 &) \
-    && export DISPLAY=:100 \
-    && WINEARCH=win32 ./winetricks -q vc2005expresssp1 vc2008express \
     && git clone https://github.com/compiler-explorer/compiler-explorer.git /compiler-explorer \
     && cd /compiler-explorer \
     && echo "Add missing dependencies" \
@@ -35,6 +45,10 @@ RUN echo "*** Installing Compiler Explorer ***" \
     && npm run webpack \
     && rm -rf /var/cache/apt/* /tmp/*
 
+RUN (Xvfb :100 &) && DISPLAY=:100 WINEARCH=win32 ./winetricks -q vc2010express
+
+#RUN (Xvfb :101 &) && DISPLAY=:101 WINEARCH=win32 ./winetricks -q vc2005expresssp1
+RUN (Xvfb :102 &) && DISPLAY=:102 WINEARCH=win32 ./winetricks -q vc2008express
 
 RUN cd /root/.wine/drive_c/windows/system32 && ln -s ../../Program\ Files/Microsoft\ Visual\ Studio\ 8/Common7/IDE/mspdb80.dll
 
