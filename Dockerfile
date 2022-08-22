@@ -23,11 +23,11 @@ RUN echo "*** Installing Compiler Explorer ***" \
     && apt-get autoremove --purge -y \
     && apt-get autoclean -y \
     && echo "Installing MSVC" \
-    && wget  https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks \
+    && wget  https://raw.githubusercontent.com/edmcman/winetricks/master/src/winetricks \
     && chmod +x winetricks \
     && (Xvfb :100 &) \
     && export DISPLAY=:100 \
-    && WINEARCH=win32 ./winetricks -v -q --no-clean vc2010express \
+    && WINEARCH=win32 ./winetricks -v -q vc2010express \
     && git clone https://github.com/compiler-explorer/compiler-explorer.git /compiler-explorer \
     && cd /compiler-explorer \
     && echo "Add missing dependencies" \
