@@ -5,7 +5,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-    image: madduci/docker-compiler-explorer:latest
+    image: eschwartz/docker-msvc-compiler-explorer:latest
     container_name: compiler-explorer
     ports:
       - 10240:10240
