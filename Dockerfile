@@ -33,8 +33,8 @@ RUN echo "*** Installing Compiler Explorer ***" \
 
 RUN (Xvfb :100 &) && DISPLAY=:100 WINEARCH=win32 ./winetricks -q vc2010express
 
-RUN (Xvfb :100 &) && DISPLAY=:100 WINEARCH=win32 ./winetricks -q vc2005expresssp1
-RUN (Xvfb :100 &) && DISPLAY=:100 WINEARCH=win32 ./winetricks -q vc2008express
+RUN (Xvfb :101 &) && DISPLAY=:101 WINEARCH=win32 ./winetricks -q vc2005expresssp1
+RUN (Xvfb :102 &) && DISPLAY=:102 WINEARCH=win32 ./winetricks -q vc2008express
 
 RUN cd /root/.wine/drive_c/windows/system32 && ln -s ../../Program\ Files/Microsoft\ Visual\ Studio\ 8/Common7/IDE/mspdb80.dll
 
