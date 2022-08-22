@@ -1,3 +1,17 @@
+FROM madduci/docker-linux-cpp:latest as builder
+
+RUN dpkg --add-architecture i386 \
+    && apt-get update \
+    && apt-get install -y \
+    wine32 cabextract p7zip-full
+
+RUN wget  https://raw.githubusercontent.com/edmcman/winetricks/master/src/winetricks \
+    && chmod +x winetricks
+
+FROM builder as builder2005
+
+RUN ./winetricks -q vc2015expresssp1
+
 FROM madduci/docker-linux-cpp:latest
 
 LABEL maintainer="Edward Schwartz <edmcman@cmu.edu>" \
