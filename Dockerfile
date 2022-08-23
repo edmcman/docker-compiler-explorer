@@ -41,6 +41,9 @@ RUN cd /root/.wine/drive_c/windows/system32 && ln -s ../../Program\ Files/Micros
 ADD cpp.properties /compiler-explorer/etc/config/c++.local.properties
 ADD execution.properties /compiler-explorer/etc/config/execution.local.properties
 
+ENV LIB="C:\Program Files\Microsoft Visual Studio 9.0\VC\LIB"
+ENV LIBPATH="C:\windows\Microsoft.NET\Framework\v3.5;C:\windows\Microsoft.NET\Framework\v2.0.50727;C:\Program Files\Microsoft Visual Studio 9.0\VC\LIB"
+
 WORKDIR /compiler-explorer
 
 ENTRYPOINT [ "make" ]
