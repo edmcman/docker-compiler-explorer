@@ -7,6 +7,8 @@ services:
       dockerfile: Dockerfile
     image: eschwartz/docker-msvc-compiler-explorer:latest
     container_name: compiler-explorer
+    environment:
+      - EXTRA_ARGS=--host=0.0.0.0
     ports:
       - 10240:10240
     networks:
