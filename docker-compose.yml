@@ -9,6 +9,8 @@ services:
     container_name: compiler-explorer
     environment:
       - EXTRA_ARGS=--host=0.0.0.0
+      - LIB=C:\Program Files\Microsoft Visual Studio 8\VC\LIB
+      - LIBPATH=C:\Program Files\Microsoft Visual Studio 8\VC\LIB
     ports:
       - 10240:10240
     networks:
