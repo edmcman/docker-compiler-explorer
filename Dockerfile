@@ -27,6 +27,7 @@ RUN echo "*** Installing Compiler Explorer ***" \
     && chmod +x winetricks \
     && (Xvfb :100 &) \
     && export DISPLAY=:100 \
+    && WINEARCH=win32 DISPLAY='' ./winetricks \
     && WINEARCH=win32 ./winetricks -q vc2005expresssp1 vc2008express \
     && git clone https://github.com/compiler-explorer/compiler-explorer.git /compiler-explorer \
     && cd /compiler-explorer \
