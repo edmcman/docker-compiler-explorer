@@ -1,4 +1,4 @@
-FROM madduci/docker-linux-cpp:latest
+FROM ubuntu:latest
 
 LABEL maintainer="Edward Schwartz <edmcman@cmu.edu>" \
       license="Copyright (c) 2012-2021, Matt Godbolt"
