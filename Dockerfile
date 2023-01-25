@@ -28,7 +28,7 @@ RUN echo "*** Installing Compiler Explorer ***" \
     && (Xvfb :100 &) \
     && export DISPLAY=:100 \
     && WINEARCH=win32 DISPLAY='' winecfg -v win2k \
-    && WINEARCH=win32 ./winetricks -q -v vc2005expresssp1 vc2008express \
+    && WINEARCH=win32 ./winetricks -q vc2005expresssp1 vc2008express \
     && git clone https://github.com/compiler-explorer/compiler-explorer.git /compiler-explorer \
     && cd /compiler-explorer \
     && echo "Add missing dependencies" \
