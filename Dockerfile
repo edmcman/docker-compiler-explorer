@@ -42,8 +42,9 @@ RUN cd /root/.wine/drive_c/windows/system32 && ln -s ../../Program\ Files/Micros
 ADD cpp.properties /compiler-explorer/etc/config/c++.local.properties
 ADD execution.properties /compiler-explorer/etc/config/execution.local.properties
 
-ENV LIB="C:\Program Files\Microsoft Visual Studio 8\VC\LIB"
-ENV LIBPATH="C:\Program Files\Microsoft Visual Studio 8\VC\LIB"
+#ENV EXTRA_ARGS="--host=0.0.0.0"
+#ENV LIB="C:\Program Files\Microsoft Visual Studio 8\VC\LIB"
+#ENV LIBPATH="C:\Program Files\Microsoft Visual Studio 8\VC\LIB"
 
 WORKDIR /compiler-explorer
 
