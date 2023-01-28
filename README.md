@@ -33,7 +33,7 @@ others, but right now we support:
 
 You can just type in your terminal:
 
-`docker pull eschwartz/docker-msvc-compiler-explorer:latest && docker-compose up -d`
+`docker-compose pull && docker-compose up -d`
 
 to use my docker image or, in case of adjustments to the `Dockerfile`, just type:
 
